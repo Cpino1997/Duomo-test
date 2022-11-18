@@ -1,0 +1,59 @@
+<div *ngIf="isLoggedIn">
+  <div class="centro" *ngIf="viewMode; else editable">
+    <div *ngIf="currentRegion.id">
+        <label><strong>Region:</strong></label>
+        {{ currentRegion.nombre }}
+        <br>
+        <a
+        class="btn btn-primary-lg"
+        routerLink="/region/{{ currentRegion.id }}"
+      >
+        Editar
+      </a>
+      <button class="btn btn-waring-lg" (click)="deleteRegion()">
+        Borrar
+      </button>
+      </div>
+    </div>
+
+    <div *ngIf="!currentRegion">
+      <br />
+      <p>Porfavor selecciona una Region...</p>
+    </div>
+
+  <ng-template #editable>
+    <div ngClass="container" *ngIf="currentRegion.id" class="edit-form">
+      <h1 class="m-5 centro">Actualizar Region</h1>
+      <p class="m-5 text-center">{{ message }}</p>
+      <form>
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]="currentRegion.nombre"
+            name="nombre"
+          />
+        </div>
+
+      </form>
+      <div class="centro">
+        <button class="btn btn-danger m-2" (click)="deleteRegion()">
+          Borrar Region
+        </button>
+        <button type="submit" class="btn btn-primary" routerLink="/">Volver</button>
+        <button type="submit" class="btn btn-success m-2" (click)="updateRegion()">Actualizar Region</button>
+      </div>
+    </div>
+
+    <div class="container" *ngIf="!currentRegion.id">
+      <br />
+      <p class="centro">No puedes acceder a esta Region uwu</p>
+      <app-error></app-error>
+    </div>
+  </ng-template>
+</div>
+<div *ngIf="!isLoggedIn">
+  <app-error403></app-error403>
+</div>

@@ -1,0 +1,127 @@
+<div class="container m-5 p-5" *ngIf="isLoggedIn">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form action="#" class="form-control" [formGroup]="form" (ngSubmit)="submit()" *ngIf="!submitted">
+          <div class="row">
+
+            <div class="col-md-12">
+              <h1 class="text-center">Registro de Personas </h1>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input
+                    formControlName="nombre"
+                    id="nombre"
+                    type="text"
+                    class="form-control">
+                    <br>
+                <div *ngIf="f['nombre'].touched && f['nombre'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['nombre'].errors && f['nombre'].errors['required']">El Nombre es requerido!.</div>
+                    <div *ngIf="f['nombre'].errors && f['nombre'].errors['minlength']">Porfavor, ingrese un nombre que tenga entre 3 a 10 caracteres.</div>
+                    <div *ngIf="f['nombre'].errors && f['nombre'].errors['maxlength']">Porfavor, ingrese un nombre que tenga entre 3 a 10 caracteres.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input
+                    formControlName="apellido"
+                    id="apellido"
+                    type="text"
+                    class="form-control">
+                    <br>
+                <div *ngIf="f['apellido'].touched && f['apellido'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['apellido'].errors && f['apellido'].errors['required']">El Apellido es requerido!.</div>
+                    <div *ngIf="f['apellido'].errors && f['apellido'].errors['minlength']">Porfavor, ingrese un nombre que tenga entre 3 a 10 caracteres.</div>
+                    <div *ngIf="f['apellido'].errors && f['apellido'].errors['maxlength']">Porfavor, ingrese un nombre que tenga entre 3 a 10 caracteres.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input
+                    formControlName="correo"
+                    id="correo"
+                    type="email"
+                    class="form-control">
+                    <br>
+                <div *ngIf="f['correo'].touched && f['correo'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['correo'].errors && f['correo'].errors['required']">El Correo es requerido!.</div>
+                    <div *ngIf="f['correo'].errors && f['correo'].errors['email']">El Correo es invalido!.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nacimiento">Nacimiento:</label>
+                <input
+                    formControlName="nacimiento"
+                    id="correo"
+                    type="date"
+                    class="form-control">
+                    <br>
+                <div *ngIf="f['nacimiento'].touched && f['nacimiento'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['nacimiento'].errors && f['nacimiento'].errors['required']">La fecha de nacimiento es requerido!.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="telefono">Telefono:</label>
+                <input
+                    formControlName="telefono"
+                    id="telefono"
+                    type="tel"
+                    class="form-control">
+                    <br>
+                <div *ngIf="f['telefono'].touched && f['telefono'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['telefono'].errors && f['telefono'].errors['required']">El telefono es requerido!.</div>
+                    <div *ngIf="f['telefono'].errors && f['telefono'].errors['minlength']">Porfavor, ingrese un telefono valido.</div>
+                    <div *ngIf="f['telefono'].errors && f['telefono'].errors['maxlength']">Porfavor, ingrese un telefono valido.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6" >
+              <label class="sbw_light">Regiones:</label><br />
+              <select class="form-control" formControlName="idRegion" #idReg (click)="getValue()">
+                  <option *ngFor="let region of regiones let i = index" [value]="region.id">
+                    <a>{{region.nombre}}</a>
+                  </option>
+              </select>
+            </div>
+            <div class="col-md-6" >
+              <label>Comunas:</label><br />
+              <select class="form-control" formControlName="idComuna">
+                  <option *ngFor="let comuna of comunas let i = index" [value]="comuna.id">
+                    {{comuna.nombre}}
+                  </option>
+              </select>
+            </div>
+            <div class="col-md-12"><br></div>
+              <button class="btn btn-primary" [disabled]="form.invalid" type="submit">Enviar</button>
+            </div>
+          </form>
+          <div *ngIf="submitted">
+            <div class="container text-center">
+              <h4>Persona creada con exito! </h4>
+              <button class="btn btn-success" (click)="newPersona()">Añadir Otra persona </button>
+              <button class="btn btn-success" routerLink="/">Volver </button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container m-5 p-5" *ngIf="isLoggedIn">
+  <app-error403></app-error403>
+</div>

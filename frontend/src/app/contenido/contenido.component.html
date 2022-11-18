@@ -1,0 +1,82 @@
+<main *ngIf="!isLoggedIn">
+  <div class="container text-center">
+    <img src="https://i.ibb.co/2K5632D/logo.png" class="m-4" width="250rem">
+    <h1 class="fw-bold">Bienvenido</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Porfavor ingresa a tu cuenta para continuar, si no tienes una puedes crearla aqui tambien! </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-outline-primary btn-lg px-4 gap-3" routerLink="/registrate">Crear Cuenta</button>
+        <button type="button" class="btn btn-outline-success btn-lg px-4" routerLink="/login">Ingresar</button>
+      </div>
+    </div>
+  </div>
+</main>
+<br>
+<main *ngIf="isLoggedIn" >
+  <section class="container centro">
+    <br>
+    <h1>Bienvenido {{ username }}</h1>
+    <br>
+<div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 centro">
+      <div class="card">
+        <div class="card-header">
+          <h1>Personas Registradas</h1>
+        </div>
+        <div class="card-body">
+          <app-personas></app-personas>
+        </div>
+        <div class="card-footer">
+
+        </div>
+      </div>
+      <br>
+    </div>
+    <div class="col-md-1"></div>
+
+
+    <div class="col-md-2"></div>
+    <div class="col-md-4 m-2">
+      <div class="card">
+        <div class="card-header">
+          <small> Comunas Registradas</small>
+        </div>
+        <div class="card-body">
+          <app-comunas></app-comunas>
+        </div>
+        <div class="card-footer">
+          Selecciona una Comuna
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 m-2">
+      <div class="card">
+        <div class="card-header">
+          <small> Regiones Registradas</small>
+        </div>
+        <div class="card-body">
+          <app-regiones></app-regiones>
+        </div>
+        <div class="card-footer">
+          Selecciona una Region
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>
+</div>
+
+
+
+    <!-- Lista de personas -->
+    <!-- Lista de personas -->
+
+
+  </section>
+  <!-- modals -->
+
+  <!-- modals -->
+</main>

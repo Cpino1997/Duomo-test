@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+body{
+background-image: linear-gradient(to bottom, #198754, #3d8f62, #579770, #6d9e7f, #82a68e, #7fa793, #7ca899, #7aa89e, #5ba1a2, #3799ab, #058fb5, #0083bd);
+}
+.centro{
+  margin: auto;
+  text-align: center;
+}

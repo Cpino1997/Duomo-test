@@ -1,0 +1,59 @@
+<div *ngIf="isLoggedIn">
+  <div class="centro" *ngIf="viewMode; else editable">
+    <div *ngIf="currentComuna.id">
+        <label><strong>Comuna:</strong></label>
+        {{ currentComuna.nombre }}
+        <br>
+        <a
+        class="btn btn-primary-lg"
+        routerLink="/comunas/{{ currentComuna.id }}"
+      >
+        Editar
+      </a>
+      <button class="btn btn-waring-lg" (click)="deleteComuna()">
+        Borrar
+      </button>
+      </div>
+    </div>
+
+    <div *ngIf="!currentComuna">
+      <br />
+      <p>Porfavor selecciona una comuna...</p>
+    </div>
+
+  <ng-template #editable>
+    <div ngClass="container" *ngIf="currentComuna.id" class="edit-form">
+      <h1 class="m-5 centro">Actualizar Comuna</h1>
+      <p class="m-5 text-center">{{ message }}</p>
+      <form>
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]="currentComuna.nombre"
+            name="nombre"
+          />
+        </div>
+
+      </form>
+      <div class="centro">
+        <button class="btn btn-danger m-2" (click)="deleteComuna()">
+          Borrar Comuna
+        </button>
+        <button type="submit" class="btn btn-primary" routerLink="/">Volver</button>
+        <button type="submit" class="btn btn-success m-2" (click)="updateComuna()">Actualizar Comuna</button>
+      </div>
+    </div>
+
+    <div class="container" *ngIf="!currentComuna.id">
+      <br />
+      <p class="centro">No puedes acceder a esta Comuna uwu</p>
+      <app-error></app-error>
+    </div>
+  </ng-template>
+</div>
+<div class="container m-5 p-5" *ngIf="!isLoggedIn">
+  <app-error403></app-error403>
+</div>

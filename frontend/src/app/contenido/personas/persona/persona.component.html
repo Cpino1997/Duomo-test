@@ -1,0 +1,111 @@
+<div *ngIf="isLoggedIn">
+  <div class="container" *ngIf="viewMode; else editable">
+    <div *ngIf="!currentPersona">
+      <br />
+      <p>Porfavor selecciona una Persona...</p>
+    </div>
+  </div>
+  <ng-template #editable>
+    <div *ngIf="currentPersona.id" class="edit-form">
+      <br>
+      <div class="container">
+        <p class="m-5 text-center">{{ message }}</p>
+
+        <form class="form-control">
+          <h1 class="m-5 centro">Actualizar Persona</h1>
+          <div class="row">
+            <div class="col md-8">
+              <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  [(ngModel)]="currentPersona.nombre"
+                  name="nombre"
+                />
+              </div>
+            </div>
+            <div class="col md-8">
+              <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="apellido"
+                  [(ngModel)]="currentPersona.apellido"
+                  name="apellido"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col md-8">
+              <div class="form-group">
+                <label for="correo">correo:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="correo"
+                  [(ngModel)]="currentPersona.correo"
+                  name="correo"
+                />
+              </div>
+            </div>
+            <div class="col md-8">
+              <div class="form-group">
+                <label for="nacimiento">nacimiento:</label>
+                <input
+                  type="datetime"
+                  class="form-control"
+                  id="nacimiento"
+                  [(ngModel)]="currentPersona.nacimiento"
+                  name="nacimiento"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" >
+              <label class="sbw_light">Regiones:</label><br />
+              <select class="form-control" #idReg (click)="getValue() ">
+                  <option *ngFor="let region of regiones let i = index" [value]="region.id">
+                    <a>{{region.nombre}}</a>
+                  </option>
+              </select>
+            </div>
+            <div class="col-md-6" >
+              <label class="sbw_light">Comunas:</label><br />
+              <select class="form-control" id="idComuna" [(ngModel)]="currentPersona.idComuna" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let comuna of comunas let i = index" [value]="comuna.id">
+                    <a>{{comuna.nombre}}</a>
+                  </option>
+              </select>
+            </div>
+
+          </div>
+
+
+
+        </form>
+        <div class="centro">
+          <button class="btn btn-danger m-2" (click)="delete()">
+            Borrar Persona
+          </button>
+          <button type="submit" class="btn btn-primary" routerLink="/">Volver</button>
+          <button type="submit" class="btn btn-success m-2" (click)="update()">Actualizar Persona</button>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="!currentPersona.id">
+      <br><br>
+      <br><br>
+      <br><br>
+      <p class="centro">No puedes acceder a esta Persona uwu</p>
+      <app-error></app-error>
+    </div>
+  </ng-template>
+</div>
+<div *ngIf="!isLoggedIn">
+  <app-error403></app-error403>
+</div>

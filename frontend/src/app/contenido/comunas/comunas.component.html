@@ -1,0 +1,10 @@
+<ul class="list-group list-group-flush">
+  <li
+  class="list-group-item"
+  *ngFor="let comuna of comunas; let i = index"
+  [class.active]="i == id"
+  (click)="setActive(comuna, i)">{{comuna.nombre}}
+  <app-comuna [viewMode]="true"
+  [currentComuna]="currentComuna"></app-comuna>
+</li>
+</ul>

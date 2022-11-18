@@ -1,0 +1,46 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-success navbar-dark fixed-top">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Duomo</a>
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 centro" *ngIf="!isLoggedIn">
+        <!-- Link -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ingresar</a>
+        </li>
+      </ul>
+      <!--menu-->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 centro" *ngIf="isLoggedIn">
+        <!-- Link -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="salir()">Salir</a>
+        </li>
+      </ul>
+      <!--menu-->
+
+      <!-- Iconos -->
+        <ul class="navbar-nav d-flex flex-row me-1" >
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="mailto:pino440@gmail.com"><i class="fas fa-envelope"></i></a>
+          </li>
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="https://github.com/Cpino1997"><i class="fab fa-github"></i></a>
+          </li>
+        </ul>
+      <!-- Iconos -->
+
+    </div>
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

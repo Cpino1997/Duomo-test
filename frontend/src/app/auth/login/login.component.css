@@ -1,0 +1,26 @@
+.w60{
+  width: 400px;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+.card{
+  background-color: transparent;
+  border-color: black;
+}
+.form-control{
+  background-color: transparent;
+  border-color: black;
+}
+.btn-primary{
+  background-color: transparent;
+  border-color: black;
+  color: black;
+}
+.btn-info{
+  background-color: transparent;
+  border-color: black;
+}
+.centro{
+  margin: auto;
+}

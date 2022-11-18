@@ -28,7 +28,7 @@ insert into regiones values(0,"Arica y Parinacota"),(0,"Tarapacá"),(0,"Antofaga
 ```
 
 
-lo primero que debes saber es que esta api se protegida con JWT, por lo cual para cualquier peticion que realices al api debera incluir un header con el token. para ello necsitamos loguearnos en http://localhost:8080/api/auth/login, si no te encuentras logeado puedes hacerlo enviarndo un post a http://localhost:8080/api/registro en el cual se debera incluir un json con los siguentes atributos:
+lo primero que debes saber es que esta api se protegida con JWT, por lo cual para cualquier peticion que realices al api debera incluir un header con el token. para ello necesitamos loguearnos en http://localhost:8080/api/auth/login, si no te tienes una cuenta puedes crearla enviando una peticion post a https://backend-duomo.azurewebsites.net/api/registro en el cual se debera incluir un json con los siguentes atributos:
 - username: String de 4 a 40 caracteres
 - password: String que se encripta al guardar en la bd
 - email: String que contiene un correo el cual sera validado!
